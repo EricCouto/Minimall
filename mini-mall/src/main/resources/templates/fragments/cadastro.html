@@ -1,0 +1,42 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" th:fragment="form(miniatura, nome)"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2 th:text="${nome}"></h2>
+    <div class="table-responsive">
+        <form th:object="${miniatura}" method="post" th:action="@{/salvar}" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}">
+            <table class="table table-sm">
+                <tbody>
+                <tr>
+                    <td style="text-align: end;">Nome:</td>
+                    <td><input type="text" class="form-control" th:field="*{nome}"></td>
+                    <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+                </tr>
+                <tr>
+                    <td style="text-align: end;">Tipo:</td>
+                    <td><input type="text" class="form-control" th:field="*{tipo}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: end;">Preco:</td>
+                    <td><input type="text" class="form-control" th:field="*{preco}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: end;">Imagem:</td>
+                    <td><input type="file" name="file"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align: end;">Descricao:</td>
+                    <td><input type="text" class="form-control" th:field="*{descricao}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: end;">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-danger">Limpar</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</main>
